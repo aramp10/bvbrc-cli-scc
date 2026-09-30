@@ -1,0 +1,14 @@
+{
+   "blast_evalue_cutoff" : 1e-05,
+   "blast_min_coverage" : 0,
+   "input_type" : "aa",
+   "db_precomputed_database" : "bacteria-archaea",
+   "blast_program" : "blastp",
+   "blast_max_hits" : 10,
+   "input_source" : "fasta_file",
+   "input_fasta_file" : "/<username>@bvbrc/home/SCC_CLI/sample500.faa",
+   "db_source" : "precomputed_database",
+   "db_type" : "faa",
+   "output_file" : "sample500",
+   "output_path" : "/<username>@bvbrc/home/SCC_CLI"
+}
