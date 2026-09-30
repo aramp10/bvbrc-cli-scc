@@ -99,6 +99,8 @@ Subsystems are not in the BLAST output files. Look them up from the `sseqid` fea
    $ awk -F'\t' '!seen[$1]++ {print $1"\t"$2}' blast_out.txt > best_hits.tsv
    ```
 
+   Looking up all hits instead takes too long: for the 500-protein test job (4,243 hits), the lookup ran over 5 minutes without finishing.
+
 2. Look up subsystems. `-c id` names the feature-ID column; the `query_id` column is kept in the output:
 
    ```bash
