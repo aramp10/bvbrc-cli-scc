@@ -68,3 +68,50 @@ To work around this, submit the job parameters directly with `appserv-start-app`
    ```
 
    The job also appears on the website's Jobs page.
+
+## Download the results
+
+Outputs go to a hidden folder named after `output_file` (here `.pilot500`):
+
+```bash
+$ p3-ls -l /<username>@bvbrc/home/SCC_CLI/.pilot500
+$ p3-cp ws:/<username>@bvbrc/home/SCC_CLI/.pilot500/blast_out.txt .
+$ p3-cp ws:/<username>@bvbrc/home/SCC_CLI/.pilot500/blast_headers.txt .
+```
+
+`blast_out.txt` is tab-separated, up to 10 hits per query, with columns:
+
+```
+qseqid  sseqid  pident  length  mismatch  gapopen  qstart  qend  sstart  send  evalue  bitscore  qlen  slen
+```
+
+`qseqid` is the ID from your FASTA header. `sseqid` is the BV-BRC feature ID (`fig|...`).
+
+A 500-protein test job took about 1 h 15 min from submission to completion.
+
+## Look up subsystems for the hits
+
+Subsystems are not in the BLAST output files. Look them up from the `sseqid` feature IDs.
+
+1. Keep the top hit per query:
+
+   ```bash
+   $ awk -F'\t' '!seen[$1]++ {print $1"\t"$2}' blast_out.txt > best_hits.tsv
+   ```
+
+2. Look up subsystems. `-c id` names the feature-ID column; the `query_id` column is kept in the output:
+
+   ```bash
+   $ (echo -e "query_id\tid"; cat best_hits.tsv) | \
+       p3-get-feature-subsystems -c id -a class -a subclass -a subsystem_name -a role_name \
+       > subsystems_best_hits.tsv
+   ```
+
+3. Keep one class:
+
+   ```bash
+   $ awk -F'\t' 'NR==1 || $3=="Stress Response, Defense and Virulence"' \
+       subsystems_best_hits.tsv > stress_best_hits.tsv
+   ```
+
+A query can appear on several rows, because a feature can belong to more than one subsystem. Subclass names within a class vary (for example `Stress Response: Heat/cold shock`, or blank), so check column 4 before filtering on subclass.
