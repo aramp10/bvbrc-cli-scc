@@ -1,6 +1,6 @@
 # BV-BRC CLI on the BU Shared Computing Cluster (SCC)
 
-Submitting BV-BRC BLAST jobs from the SCC with the `bvbrc/1.048` module. More steps will be added as they are tested.
+Submitting [BV-BRC](https://www.bv-brc.org/) BLAST jobs from the SCC with the `bvbrc/1.048` module. More steps will be added as they are tested.
 
 ## Log in
 
