@@ -107,7 +107,9 @@ Subsystems are not in the BLAST output files. Look them up from the `sseqid` fea
        > subsystems_best_hits.tsv
    ```
 
-3. Keep one class:
+   `subsystems_best_hits.tsv` has every class and subclass for each top hit.
+
+3. Optional: filter by class, for example:
 
    ```bash
    $ awk -F'\t' 'NR==1 || $3=="Stress Response, Defense and Virulence"' \
