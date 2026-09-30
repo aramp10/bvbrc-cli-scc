@@ -46,7 +46,11 @@ To work around this, submit the job parameters directly with `appserv-start-app`
    $ p3-ls -l /<username>@bvbrc/home/SCC_CLI
    ```
 
-2. Copy [`examples/params.json`](examples/params.json) and edit these fields (example username `jdoe`):
+2. Download [`examples/params.json`](examples/params.json) and edit these fields (example username `jdoe`):
+
+   ```bash
+   $ wget https://raw.githubusercontent.com/aramp10/bvbrc-cli-scc/main/examples/params.json
+   ```
 
    | Field | Original | Change to |
    |---|---|---|
