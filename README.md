@@ -91,7 +91,7 @@ A 500-protein test job took about 1 h 15 min from submission to completion.
 
 ## Look up subsystems for the hits
 
-Subsystems are not in the BLAST output files. Look them up from the `sseqid` feature IDs.
+Subsystems are not in the BLAST output files. Look them up from the `sseqid` feature IDs. For how genome IDs, feature IDs and subsystems connect, and why a lookup can return only a header, see [subsystems.md](subsystems.md).
 
 1. Keep the top hit per query:
 
