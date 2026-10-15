@@ -119,3 +119,29 @@ Subsystems are not in the BLAST output files. Look them up from the `sseqid` fea
    ```
 
 A query can appear on several rows, because a feature can belong to more than one subsystem. Subclass names within a class vary (for example `Stress Response: Heat/cold shock`, or blank), so check column 4 before filtering on subclass.
+
+### Example: 500-protein test job
+
+| | Count |
+|---|---|
+| Query proteins | 500 |
+| Queries with at least one hit | 423 |
+| Hits (rows in `blast_out.txt`) | 4,243 |
+| Top hits (rows in `best_hits.tsv`) | 423 |
+| Top hits with at least one subsystem | 122 |
+| Rows in `subsystems_best_hits.tsv` | 260 (175 unique) |
+| Distinct subsystems | 99 |
+| Distinct classes | 18 |
+
+Of the 122 queries with a subsystem, 78 have one subsystem, 35 have two and 9 have three. The subsystem lookup for the 423 top hits took about 4 minutes; the time can vary between runs.
+
+Query proteins per class, top 5: Stress Response, Defense and Virulence (20); Membrane Transport (17); Protein Synthesis (16); RNA Processing (12); Protein Fate (12).
+
+Example rows (`query_id`, `id`, class, subclass, subsystem, role):
+
+```
+Ga0604837_01723_431_685  fig|502025.10.peg.4021  Stress Response, Defense and Virulence  Resistance to antibiotics and toxic compounds  Antibiotic targets in transcription  DNA-directed RNA polymerase beta subunit (EC 2.7.7.6)
+Ga0604837_00359_3_431    fig|351605.6.peg.1113   Membrane Transport  ABC transporters  Maintenance of outer membrane lipid asymmetry  Phospholipid ABC transporter permease protein MlaE
+Ga0604837_00874_2_817    fig|338963.6.peg.2503   Protein Synthesis  Aminoacyl-tRNA-synthetases  tRNA aminoacylation, Val  Valyl-tRNA synthetase (EC 6.1.1.9)
+Ga0604837_01287_307_741  fig|1379270.3.peg.2014  Respiration  Electron donating reactions  NADH ubiquinone oxidoreductase  NADH-ubiquinone oxidoreductase chain B (EC 1.6.5.3)
+```
