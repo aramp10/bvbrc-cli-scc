@@ -137,11 +137,11 @@ Of the 122 queries with a subsystem, 78 have one subsystem, 35 have two and 9 ha
 
 Query proteins per class, top 5: Stress Response, Defense and Virulence (20); Membrane Transport (17); Protein Synthesis (16); RNA Processing (12); Protein Fate (12).
 
-Example rows (`query_id`, `id`, class, subclass, subsystem, role):
+Example rows (the file is tab-separated):
 
-```
-Ga0604837_01723_431_685  fig|502025.10.peg.4021  Stress Response, Defense and Virulence  Resistance to antibiotics and toxic compounds  Antibiotic targets in transcription  DNA-directed RNA polymerase beta subunit (EC 2.7.7.6)
-Ga0604837_00359_3_431    fig|351605.6.peg.1113   Membrane Transport  ABC transporters  Maintenance of outer membrane lipid asymmetry  Phospholipid ABC transporter permease protein MlaE
-Ga0604837_00874_2_817    fig|338963.6.peg.2503   Protein Synthesis  Aminoacyl-tRNA-synthetases  tRNA aminoacylation, Val  Valyl-tRNA synthetase (EC 6.1.1.9)
-Ga0604837_01287_307_741  fig|1379270.3.peg.2014  Respiration  Electron donating reactions  NADH ubiquinone oxidoreductase  NADH-ubiquinone oxidoreductase chain B (EC 1.6.5.3)
-```
+| query_id | id | class | subclass | subsystem | role |
+|---|---|---|---|---|---|
+| Ga0604837_01723_431_685 | fig\|502025.10.peg.4021 | Stress Response, Defense and Virulence | Resistance to antibiotics and toxic compounds | Antibiotic targets in transcription | DNA-directed RNA polymerase beta subunit (EC 2.7.7.6) |
+| Ga0604837_00359_3_431 | fig\|351605.6.peg.1113 | Membrane Transport | ABC transporters | Maintenance of outer membrane lipid asymmetry | Phospholipid ABC transporter permease protein MlaE |
+| Ga0604837_00874_2_817 | fig\|338963.6.peg.2503 | Protein Synthesis | Aminoacyl-tRNA-synthetases | tRNA aminoacylation, Val | Valyl-tRNA synthetase (EC 6.1.1.9) |
+| Ga0604837_01287_307_741 | fig\|1379270.3.peg.2014 | Respiration | Electron donating reactions | NADH ubiquinone oxidoreductase | NADH-ubiquinone oxidoreductase chain B (EC 1.6.5.3) |
