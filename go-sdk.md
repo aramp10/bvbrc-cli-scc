@@ -41,6 +41,8 @@ Error: querying subsystems for feature fig|511145.12.peg.1: API error: 400 Bad R
     "msg": "undefined field patric_id",
 ```
 
+**This is a bug in the Go-SDK package itself; only its developers can fix it.** It does not depend on how or where the package is installed.
+
 The same lookup works with the `bvbrc/1.048` module. As a workaround, leave the conda environment and load the module:
 
 ```bash
