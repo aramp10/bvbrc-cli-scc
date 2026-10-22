@@ -29,7 +29,7 @@ $ module load miniconda/25.3.1
 $ mamba activate bvbrc_go_env
 ```
 
-For the list of commands, see the [Go-SDK README](https://github.com/BV-BRC/BV-BRC-Go-SDK#readme).
+For the list of commands, see the [Go-SDK Command Reference](https://github.com/BV-BRC/BV-BRC-Go-SDK#command-reference).
 
 ## Known issue: subsystem lookup fails
 
