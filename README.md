@@ -2,6 +2,8 @@
 
 Submitting [BV-BRC](https://www.bv-brc.org/) BLAST jobs from the SCC with the `bvbrc/1.048` module. More steps will be added as they are tested.
 
+Alternative: the BV-BRC Go-SDK, installed with conda. See [go-sdk.md](go-sdk.md).
+
 ## Log in
 
 Requires a free BV-BRC account (https://www.bv-brc.org/register).
