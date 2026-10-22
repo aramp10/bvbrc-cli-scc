@@ -33,7 +33,15 @@ For the list of commands, see the [Go-SDK Command Reference](https://github.com/
 
 ## Known issue: subsystem lookup fails
 
-In versions 2.0.16 and 2.0.17, `p3-get-feature-subsystems` returns only a header line and this error:
+In versions 2.0.16 and 2.0.17, `p3-get-feature-subsystems` fails. Minimal example, looking up one protein (thrA, *E. coli* K-12 MG1655):
+
+```bash
+$ module load miniconda/25.3.1
+$ mamba activate bvbrc_go_env
+$ printf 'id\nfig|511145.12.peg.1\n' | p3-get-feature-subsystems
+```
+
+It returns only a header line and this error:
 
 ```
 Error: querying subsystems for feature fig|511145.12.peg.1: API error: 400 Bad Request - A Database Error Occured:
@@ -43,11 +51,12 @@ Error: querying subsystems for feature fig|511145.12.peg.1: API error: 400 Bad R
 
 **This is a bug in the Go-SDK package itself; only its developers can fix it.** It does not depend on how or where the package is installed.
 
-The same lookup works with the `bvbrc/1.048` module. As a workaround, leave the conda environment and load the module:
+The same lookup works with the `bvbrc/1.048` module, returning 7 subsystem rows:
 
 ```bash
 $ conda deactivate
 $ module load bvbrc/1.048
+$ printf 'id\nfig|511145.12.peg.1\n' | p3-get-feature-subsystems
 ```
 
-Then follow [Look up subsystems for the hits](README.md#look-up-subsystems-for-the-hits) in the README.
+As a workaround, use the module for subsystem lookups: follow [Look up subsystems for the hits](README.md#look-up-subsystems-for-the-hits) in the README.
