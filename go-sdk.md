@@ -31,32 +31,22 @@ $ mamba activate bvbrc_go_env
 
 For the list of commands, see the [Go-SDK Command Reference](https://github.com/BV-BRC/BV-BRC-Go-SDK#command-reference).
 
-## Known issue: subsystem lookup fails
+## Subsystem lookup: fixed in 2.0.18
 
-In versions 2.0.16 and 2.0.17, `p3-get-feature-subsystems` fails. Minimal example, looking up one protein (thrA, *E. coli* K-12 MG1655):
+In versions 2.0.16 and 2.0.17, `p3-get-feature-subsystems` fails with `400 Bad Request` and `"undefined field patric_id"`. Version 2.0.18 fixes this.
+
+To upgrade an existing environment:
 
 ```bash
 $ module load miniconda/25.3.1
+$ conda install -y -n bvbrc_go_env -c bv-brc bvbrc-cli=2.0.18
+```
+
+Minimal example, looking up one protein (thrA, *E. coli* K-12 MG1655):
+
+```bash
 $ mamba activate bvbrc_go_env
 $ printf 'id\nfig|511145.12.peg.1\n' | p3-get-feature-subsystems
 ```
 
-It returns only a header line and this error:
-
-```
-Error: querying subsystems for feature fig|511145.12.peg.1: API error: 400 Bad Request - A Database Error Occured:
-...
-    "msg": "undefined field patric_id",
-```
-
-**This is a bug in the Go-SDK package itself; only its developers can fix it.** It does not depend on how or where the package is installed.
-
-The same lookup works with the `bvbrc/1.048` module, returning 7 subsystem rows:
-
-```bash
-$ conda deactivate
-$ module load bvbrc/1.048
-$ printf 'id\nfig|511145.12.peg.1\n' | p3-get-feature-subsystems
-```
-
-As a workaround, use the module for subsystem lookups: follow [Look up subsystems for the hits](README.md#look-up-subsystems-for-the-hits) in the README.
+Tested 2026-10-29: returns 7 subsystem rows, identical to the `bvbrc/1.048` module (see [Look up subsystems for the hits](README.md#look-up-subsystems-for-the-hits) in the README).
