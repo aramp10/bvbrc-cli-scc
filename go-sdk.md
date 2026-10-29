@@ -20,7 +20,7 @@ $ conda install -y -c bv-brc bvbrc-cli
 $ p3-ls --version
 ```
 
-Tested 2026-10-22; this installed version 2.0.17.
+Tested 2026-10-29; this installed version 2.0.18.
 
 In later sessions, only activate the environment:
 
@@ -31,22 +31,6 @@ $ mamba activate bvbrc_go_env
 
 For the list of commands, see the [Go-SDK Command Reference](https://github.com/BV-BRC/BV-BRC-Go-SDK#command-reference).
 
-## Subsystem lookup: fixed in 2.0.18
+## Note: subsystem lookup bug in older versions
 
-In versions 2.0.16 and 2.0.17, `p3-get-feature-subsystems` fails with `400 Bad Request` and `"undefined field patric_id"`. Version 2.0.18 fixes this.
-
-To upgrade an existing environment:
-
-```bash
-$ module load miniconda/25.3.1
-$ conda install -y -n bvbrc_go_env -c bv-brc bvbrc-cli=2.0.18
-```
-
-Minimal example, looking up one protein (thrA, *E. coli* K-12 MG1655):
-
-```bash
-$ mamba activate bvbrc_go_env
-$ printf 'id\nfig|511145.12.peg.1\n' | p3-get-feature-subsystems
-```
-
-Tested 2026-10-29: returns 7 subsystem rows, identical to the `bvbrc/1.048` module (see [Look up subsystems for the hits](README.md#look-up-subsystems-for-the-hits) in the README).
+In versions 2.0.16 and 2.0.17, `p3-get-feature-subsystems` fails with `400 Bad Request` and `"undefined field patric_id"`. It is fixed in [v2.0.18](https://github.com/BV-BRC/BV-BRC-Go-SDK/releases/tag/v2.0.18). If `p3-ls --version` shows an older version, re-run the [Install](#install) steps.
